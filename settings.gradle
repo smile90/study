@@ -1,0 +1,25 @@
+rootProject.name = 'study'
+
+include 's-spring'
+include "s-aop"
+include "s-ioc"
+project(':s-aop').projectDir = file('s-spring/s-aop')
+project(':s-ioc').projectDir = file('s-spring/s-ioc')
+
+include 's-SpringBoot'
+include 'test-spring-boot-starter'
+project(':test-spring-boot-starter').projectDir = file('s-SpringBoot/test-spring-boot-starter')
+include 'test-spring-boot-starter-run'
+project(':test-spring-boot-starter-run').projectDir = file('s-SpringBoot/test-spring-boot-starter-run')
+
+include 's-gongju'
+include 's-suanfa'
+
+include 's-drools'
+include 's-redis'
+include 's-RabbitMQ'
+include 's-netty'
+
+include 's-lambda'
+include 's-pachong'
+

@@ -1,0 +1,10 @@
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter')
+
+    implementation('org.kie:kie-api')
+    implementation('org.drools:drools-core')
+    implementation('org.drools:drools-decisiontables')
+    implementation('org.drools:drools-templates')
+
+    runtimeOnly('org.drools:drools-compiler')
+}

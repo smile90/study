@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    host: 192.168.1.64
+    port: 5672
+    username: risk
+    password: risk123
+    virtual-host: risk

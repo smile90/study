@@ -1,0 +1,9 @@
+// 子工程配置
+subprojects {
+    // 依赖
+    dependencies {
+        implementation group: 'org.springframework', name: 'spring-core', version: '5.2.8.RELEASE'
+        implementation group: 'org.springframework', name: 'spring-beans', version: '5.2.8.RELEASE'
+        implementation group: 'org.springframework', name: 'spring-context', version: '5.2.8.RELEASE'
+    }
+}

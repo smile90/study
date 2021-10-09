@@ -1,0 +1,73 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+// 所有工程配置
+allprojects {
+    // 阿里云 maven仓库
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/public/'
+        }
+        mavenLocal()
+        mavenCentral()
+    }
+
+    // 版本号
+    version = '1.0'
+    group = 'org.duancq90'
+}
+
+// 所有子工程
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+
+    // JAVA编译版本
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    // 依赖管理
+    dependencyManagement {
+        dependencies {
+            imports {
+                mavenBom 'org.drools:drools-bom:7.56.0.Final'
+            }
+            imports {
+                mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2020.0.3'
+            }
+
+            dependency group: 'io.netty', name: 'netty-all', version: '4.1.68.Final'
+
+            dependency group: 'org.apache.commons', name: 'commons-lang3', version: '4.4'
+            dependency group: 'org.apache.commons', name: 'commons-collections4', version: '2.7'
+            dependency group: 'com.alibaba', name: 'fastjson', version: '1.2.76'
+            dependency group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+            dependency group: 'junit', name: 'junit', version: '4.12'
+//        dependencySet(group: '', version: '') {
+//            entry ''
+//        }
+        }
+    }
+
+    // 默认依赖
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-logging'
+        implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+
+        compile 'org.apache.commons:commons-collections4'
+        compile 'org.apache.commons:commons-lang3'
+        compile 'com.alibaba:fastjson'
+        compileOnly 'org.projectlombok:lombok'
+        testImplementation 'org.projectlombok:lombok'
+        testImplementation 'junit:junit'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}

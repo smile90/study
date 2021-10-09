@@ -1,0 +1,7 @@
+server:
+  port: 8080
+
+sys:
+  log:
+    enable: true
+    name: "test1"

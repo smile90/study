@@ -1,0 +1,31 @@
+import org.duancq90.study.drools.Person
+import org.duancq90.study.drools.RuleObject
+import org.duancq90.study.drools.NumberUtil
+import java.math.BigDecimal
+
+dialect  "mvel"
+rule "age"
+    when
+        $person : Person(age < 18 || age > 60)
+    then
+        System.out.println($person.name + "的年龄不符合要求!");
+end
+rule "util"
+    when
+        $ruleObject: RuleObject()
+        eval((NumberUtil.ge(
+              NumberUtil.add($ruleObject.getBigDecimal("one"), $ruleObject.getBigDecimal("two")),
+              BigDecimal.valueOf(1)
+          )))
+    then
+        $ruleObject.ruleMatch("RULE1", 20);
+        System.out.println("----------:" + $ruleObject);
+end
+rule "util2"
+    when
+        $ruleObject: RuleObject()
+        eval(true)
+    then
+        $ruleObject.ruleMatch("RULE2", 30);
+        System.out.println("++++++++++:" + $ruleObject);
+end
